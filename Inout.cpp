@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 
-list<Partido> Inout::lePartidos(string arq){
+vector<Partido> Inout::lePartidos(string arq){
     ifstream entrada;
     int cont = 0;
     bool fimArquivo = false;
@@ -44,5 +44,7 @@ list<Partido> Inout::lePartidos(string arq){
     }
     
     entrada.close();
-    return listaPartidos;
+    vector<Partido> partidos(listaPartidos.begin(), listaPartidos.end());
+    
+    return partidos;
 }

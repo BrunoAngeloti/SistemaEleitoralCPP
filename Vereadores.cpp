@@ -1,5 +1,6 @@
 #include <iostream>
 #include <list>
+#include <vector>
 #include "Inout.h"
 #include "Candidato.h"
 #include "Partido.h"
@@ -11,7 +12,7 @@ int main(int argc, char* argv[]){
 
     Inout* in = new Inout();
 
-    list<Partido> listaPartidos = in->lePartidos(argv[1]);
+    vector<Partido> listaPartidos = in->lePartidos(argv[1]);
     
     for(auto partido : listaPartidos)
         partido.imprimePartido();
