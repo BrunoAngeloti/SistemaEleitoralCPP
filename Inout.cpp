@@ -15,17 +15,14 @@ list<Partido> Inout::lePartidos(string arq){
     string palavra;
 
     if(entrada.is_open()){
-        
         while(entrada.good()){
-            
             for(int i=0; i<3;i++){
                 getline(entrada, palavra, ',');
                 if(palavra == "\0"){
                     fimArquivo = true;
                     break;
                 }
-                aux.push_back(palavra);
-                
+                aux.push_back(palavra); 
             }
             if(fimArquivo) break;
             getline(entrada, palavra, '\n');
@@ -47,6 +44,5 @@ list<Partido> Inout::lePartidos(string arq){
     }
     
     entrada.close();
-
     return listaPartidos;
 }

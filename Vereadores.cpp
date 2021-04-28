@@ -11,7 +11,7 @@ int main(int argc, char* argv[]){
 
     Inout* in = new Inout();
 
-    list<Partido> listaPartidos = in->lePartidos("./testes/serra/in/partidos.csv");
+    list<Partido> listaPartidos = in->lePartidos(argv[1]);
     
     for(auto partido : listaPartidos)
         partido.imprimePartido();

@@ -6,7 +6,6 @@ using namespace std;
 
 class Partido{
     public:
-       // Partido(int numero_partido, int votos_legenda, string nome_partido, string sigla_partido);
         Partido(list<string> lista);
         int getNumero_partido();
         void setNumero_partido(int numero_partido);
