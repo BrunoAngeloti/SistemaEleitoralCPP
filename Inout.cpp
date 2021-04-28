@@ -162,7 +162,29 @@ void Inout::imprimePartidos(vector<Partido> partidos){
     
 }
 void Inout::imprimePrimUlt(vector<Candidato> primeiros, vector<Candidato> ultimos, vector<Partido> partidos){
-
+    cout << "\nPrimeiro e último colocados de cada partido:" << endl;
+    
+    for(int m = 0, n = 1; m < primeiros.size(); m++){
+        int numPartido = primeiros[m].getNumero_partido();
+        for(int i = 0; i < partidos.size(); i++){
+            if(partidos[i].comparaPartido(numPartido)){
+                break;
+            }
+        }
+        if(primeiros[m].getSexo() != "n" && ultimos[m].getSexo() != "n"){      
+            cout << n << " - ";
+            primeiros[m].imprime(partidos, ultimos[m].getNome_urna(), ultimos[m].getNumero(), ultimos[m].getVotos_nominais());
+            n++;      
+        }else if(primeiros[m].getSexo() != "n" && ultimos[m].getSexo() == "n"){
+            cout << n << " - ";
+            primeiros[m].imprime(partidos, primeiros[m].getNome_urna(), primeiros[m].getNumero(), primeiros[m].getVotos_nominais());
+            n++;  
+        }else if(primeiros[m].getSexo() == "n" && ultimos[m].getSexo() != "n"){
+            cout << n << " - ";
+            ultimos[m].imprime(partidos, ultimos[m].getNome_urna(), ultimos[m].getNumero(), ultimos[m].getVotos_nominais());
+            n++;  
+        }     
+    } 
 }
 
 void Inout::imprimeRelatorios(

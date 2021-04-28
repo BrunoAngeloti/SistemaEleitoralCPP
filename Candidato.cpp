@@ -138,7 +138,7 @@ void Candidato::imprimeCandidatos(vector<Partido> part){
 void Candidato::imprime(vector<Partido> part, string nome, int num, int votos){
     for(auto partido : part){
         if(partido.comparaPartido(this->numero_partido)){  
-            cout << partido.getSigla_partido() << " - " << this->getNumero_partido() << ", " << this->getNome_urna() << " (" + this->getNumero() << ", " << this->getVotos_nominais();
+            cout << partido.getSigla_partido() << " - " << this->getNumero_partido() << ", " << this->getNome_urna() << " (" << this->getNumero() << ", " << this->getVotos_nominais();
             
             if(this->getVotos_nominais() <= 1){
                 cout << " voto) / " << nome << " (" << num << ", " << votos; // caso seja no singular
@@ -153,8 +153,10 @@ void Candidato::imprime(vector<Partido> part, string nome, int num, int votos){
             else{
                 cout << " votos)"; // caso seja no plural
             }
+            cout << "ue" << endl;
         }
     }
+    
 }
 
 /*/------------------- MÉTODOS DE IMPRESSÃO TOSTRING ------------------
