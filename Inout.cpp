@@ -97,3 +97,4 @@ vector<Candidato> Inout::leCandidatos(string arq){
     
     return candidatos;
 }
+
