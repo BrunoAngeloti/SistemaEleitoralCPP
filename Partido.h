@@ -32,6 +32,7 @@ class Partido{
         bool comparaPartido(int numeroId);
 
         void imprimePartido();
+       
   
     private:
         int numero_partido;

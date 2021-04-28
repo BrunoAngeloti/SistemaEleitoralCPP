@@ -2,11 +2,10 @@
 #include <list>
 #include <vector>
 #include "Inout.h"
-#include "Candidato.h"
 #include "Partido.h"
+#include "Informacoes.h"
 
-//#include "Informacoes.h"
-
+#include "Candidato.h"
 
 int main(int argc, char* argv[]){
     if(argc < 2){
@@ -14,20 +13,30 @@ int main(int argc, char* argv[]){
         return 0;
     } 
 
-    Inout* in = new Inout();
+    Inout in = Inout();
+    Informacoes info = Informacoes();
+    string fileCandidatos = argv[1];
+    string filePartidos = argv[2];
+    //string dataEleicao = argv[3];
 
-    vector<Partido> listaPartidos = in->lePartidos(argv[1]);
-    vector<Candidato> listaCandidatos = in->leCandidatos(argv[2]);
-
-    for(auto partido : listaPartidos)
-        partido.imprimePartido();
-
-    cout << "\n\n\n";
+    vector<Candidato> listaCandidatos = in.leCandidatos(fileCandidatos);
+    vector<Partido> listaPartidos = in.lePartidos(filePartidos);
     
-    for(auto candidato : listaCandidatos)
-        candidato.imprimeCandidato();
+    listaPartidos = info.ordenaPartidos(listaPartidos);
+    listaCandidatos = info.ordenaCandidatos(listaCandidatos);
+
+    int qtdEleitos = info.retornaQtdEleitos(listaCandidatos);
+
+    //for(auto partido : listaPartidos)
+        //partido.imprimePartido();
+
+
+    //cout << "\n\n\n";
+
+    //for(auto candidato : listaCandidatos)
+        //candidato.imprimeCandidato();
              
-    delete(in);
+    //delete(in);
     
 
     /*

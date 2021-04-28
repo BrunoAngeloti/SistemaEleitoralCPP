@@ -27,6 +27,8 @@ vector<Partido> Inout::lePartidos(string arq){
             if(fimArquivo) break;
             getline(entrada, palavra, '\n');
             aux.push_back(palavra);
+
+            // ----------------------------- 
             
             if(cont == 0) {
                 cont++;
@@ -48,7 +50,6 @@ vector<Partido> Inout::lePartidos(string arq){
     
     return partidos;
 }
-
 
 vector<Candidato> Inout::leCandidatos(string arq){
     ifstream entrada;

@@ -4,6 +4,7 @@
 Candidato::Candidato(list<string> lista){
     
     vector<string> aux(lista.begin(), lista.end());
+    lista.clear();
     setNumero(stoi(aux[0]));
 
     setVotos_nominais(stoi(aux[1]));
@@ -127,6 +128,8 @@ int Candidato::retornaIdadeCandidato(string dataRef){
 
 void Candidato::imprimeCandidato(){
     cout 
+    << this->getVotos_nominais()
+    << ", "
     << this->getNome() 
     << ", " 
     << this->getNumero_partido() 
@@ -183,59 +186,3 @@ void Candidato::imprimeCandidato(){
         return "erro";
     }
     */
-
-
- /*//------------------- MÉTODO DE COMPARAÇÃO PARA O ARRAYS.SORT ------------------
-
-    @Override
-    public int compareTo(Candidato cand) {
-        if(cand != null){
-            String[] dataCand1 = new String[3];
-            String[] dataCand2 = new String[3];
-            
-            dataCand1 = this.data_nasc.split("/");
-            dataCand2 = cand.getData_nasc().split("/");
-            
-            if(this.votos_nominais > cand.getVotos_nominais()){
-                return -1;
-            }
-            else if(this.votos_nominais < cand.getVotos_nominais()){
-                return 1;
-            }
-            else{
-                // Em caso de empate, o candidato mais velho terá prioridade 
-                if(Integer.parseInt(dataCand1[2]) < Integer.parseInt(dataCand2[2])){ // retorna -1, o cand1 é mais velho
-                    return -1;
-                }
-                else if(Integer.parseInt(dataCand1[2]) > Integer.parseInt(dataCand2[2])){ // retorna 1, o cand2 é o mais velho
-                    return 1;
-                }
-                else{
-                    if(Integer.parseInt(dataCand1[1]) < Integer.parseInt(dataCand2[1])){ // retorna -1, o cand1 é mais velho
-                        return -1;
-                    }
-                    else if(Integer.parseInt(dataCand1[1]) > Integer.parseInt(dataCand2[1])){ // retorna 1, o cand2 é o mais velho
-                        return 1;
-                    }
-                    else{
-                        if(Integer.parseInt(dataCand1[0]) < Integer.parseInt(dataCand2[0])){ // retorna -1, o cand1 é mais velho
-                            return -1;
-                        }
-                        else if(Integer.parseInt(dataCand1[0]) > Integer.parseInt(dataCand2[0])){ // retorna 1, o cand2 é o mais velho
-                            return 1;
-                        }
-                        else{
-                            // Caso eles tiverem a mesma idade, número do candidato irá desempatar
-                            if(this.getNumero() < cand.getNumero()){
-                                return -1;
-                            }
-                            else{
-                                return 1;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return 0;
-    }*/

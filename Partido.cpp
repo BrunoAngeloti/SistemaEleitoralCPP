@@ -3,12 +3,10 @@
 
 Partido::Partido(list<string> lista){
     vector<string> aux(lista.begin(), lista.end());
+    lista.clear();
     setNumero_partido(stoi(aux[0]));
-
     setVotos_legenda(stoi(aux[1]));
-
     setNome_partido(aux[2]);
-
     setSigla_partido(aux[3]);
     setVotos_total(0);
     setVotos_nominais(0);
@@ -78,20 +76,3 @@ void Partido::imprimePartido(){
     << endl;
 }
 
-/*//------------------- MÉTODO DE COMPARAÇÃO PARA O ARRAYS.SORT ------------------
-
-    @Override
-    public int compareTo(Partido part) {
-        if(this.votos_total > part.getVotos_total()){
-            return -1;
-        }
-        else if(this.votos_total < part.getVotos_total()){
-            return 1;
-        }else{
-            if(this.numero_partido < part.getNumero_partido()){
-                return -1;
-            }else{
-                return 1;
-            }
-        }
-    }*/
