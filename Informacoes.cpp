@@ -5,16 +5,18 @@
 bool ordenaVotosPartidos(Partido A, Partido B){
     if(A.getVotos_total() > B.getVotos_total()){
         return true;
-    }
+    } 
     else if(A.getVotos_total() < B.getVotos_total()){
         return false;
     }else{
+        
         if(A.getNumero_partido() < B.getNumero_partido()){
             return true;
         }else{
             return false;
         }
     }
+    return false;
 }
 
 bool ordenaVotosCandidatos(Candidato A, Candidato B){
@@ -124,17 +126,18 @@ int Informacoes::retornaQtdBeneficiados(vector<Candidato> candEleitos, vector<Ca
 
 
     // ---------------- MÉTODOS PARA RETORNAR VETORES DE CANDIDATOS ESPECIFICOS -----------------
-/*vector<Candidato> Informacoes::retornaCandValidos(vector<Candidato> cand) {
-        vector<Candidato> candValidos[this->retornaQtdValidos(cand)];
-        for(int i = 0, j = 0; i < cand.size(); i++){ 
-            if(cand[i].identificaValidade()){ 
-                candValidos[j] = cand[i];
-                j++;
-            }
+vector<Candidato> Informacoes::retornaCandValidos(vector<Candidato> cand) {
+    vector<Candidato> candValidos;//[this->retornaQtdValidos(cand)];
+    for(int i = 0, j = 0; i < cand.size(); i++){ 
+        if(cand[i].identificaValidade()){ 
+            candValidos.push_back(cand[i]);
+            j++;
         }
-        return candValidos;
     }
+    return candValidos;
+}
 
+/*
   vector<Candidato> Informacoes::retornaCandEleitos(vector<Candidato> candValidos, int qtdEleitos) {
         vector<Candidato> candEleitos = new Candidato[qtdEleitos];
         for(int i = 0, j = 0; i < candValidos.size(); i++){ 

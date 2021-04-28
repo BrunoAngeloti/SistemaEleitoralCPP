@@ -4,23 +4,15 @@
 Candidato::Candidato(list<string> lista){
     
     vector<string> aux(lista.begin(), lista.end());
-    lista.clear();
+
     setNumero(stoi(aux[0]));
-
     setVotos_nominais(stoi(aux[1]));
-
     setSituacao(aux[2]);
-    
     setNome(aux[3]);
-
     setNome_urna(aux[4]);
-
     setSexo(aux[5]);
-
     setData_nasc(aux[6]);
-    
     setDestino_voto(aux[7]);
-    
     setNumero_partido(stoi(aux[8]));
 }
 

@@ -4,8 +4,8 @@
 #include "Inout.h"
 #include "Partido.h"
 #include "Informacoes.h"
-
 #include "Candidato.h"
+
 
 int main(int argc, char* argv[]){
     if(argc < 2){
@@ -19,26 +19,25 @@ int main(int argc, char* argv[]){
     string filePartidos = argv[2];
     //string dataEleicao = argv[3];
 
-    vector<Candidato> listaCandidatos = in.leCandidatos(fileCandidatos);
+    vector<Candidato> candidatos = in.leCandidatos(fileCandidatos);
     vector<Partido> listaPartidos = in.lePartidos(filePartidos);
     
     listaPartidos = info.ordenaPartidos(listaPartidos);
-    listaCandidatos = info.ordenaCandidatos(listaCandidatos);
+    candidatos = info.ordenaCandidatos(candidatos);
 
-    int qtdEleitos = info.retornaQtdEleitos(listaCandidatos);
+    int qtdEleitos = info.retornaQtdEleitos(candidatos);
 
-    //for(auto partido : listaPartidos)
-        //partido.imprimePartido();
+    vector<Candidato> candidatosValidos = info.retornaCandValidos(candidatos);
 
 
-    //cout << "\n\n\n";
+    /*for(auto partido : listaPartidos)
+        partido.imprimePartido();
 
-    //for(auto candidato : listaCandidatos)
-        //candidato.imprimeCandidato();
+    cout << "\n\n\n";*/
+
+    for(auto candidato : candidatosValidos)
+        candidato.imprimeCandidato();
              
-    //delete(in);
-    
-
     /*
 
     Candidato* cand1 = new Candidato(59, 475, "Eleito", "Bruno Angeloti", "Brunin de JP", 'I', "11/11/2001", "Válido", 15);
