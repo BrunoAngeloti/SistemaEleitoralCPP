@@ -118,39 +118,46 @@ int Candidato::retornaIdadeCandidato(string dataRef){
         
 }
 
-void Candidato::imprimeCandidato(){
-    cout 
-    << this->getVotos_nominais()
-    << ", "
-    << this->getNome() 
-    << ", " 
-    << this->getNumero_partido() 
-    << ", " 
-    << this->getData_nasc() 
-    << ", " 
-    << this->getSexo() 
-    << endl;
+void Candidato::imprimeCandidatos(vector<Partido> part){
+    for(auto partido : part){
+        if(partido.comparaPartido(this->numero_partido)){
+            cout << this->getNome() << " / " << this->getNome_urna() << " (" << partido.getSigla_partido() << ", " << this->getVotos_nominais();
+            
+            if(this->getVotos_nominais() <= 1){
+                cout << " voto)"; // caso seja no singular
+            }
+            else{
+                cout << " votos)"; // caso seja no plural
+            }
+
+            cout << endl;
+        }
+    }
+}
+
+void Candidato::imprime(vector<Partido> part, string nome, int num, int votos){
+    for(auto partido : part){
+        if(partido.comparaPartido(this->numero_partido)){  
+            cout << partido.getSigla_partido() << " - " << this->getNumero_partido() << ", " << this->getNome_urna() << " (" + this->getNumero() << ", " << this->getVotos_nominais();
+            
+            if(this->getVotos_nominais() <= 1){
+                cout << " voto) / " << nome << " (" << num << ", " << votos; // caso seja no singular
+            }
+            else{
+                cout << " votos) / " << nome << " (" << num << ", " << votos; // caso seja no plural
+            }
+                
+            if(votos <= 1){
+                cout << " voto)"; // caso seja no singular
+            }
+            else{
+                cout << " votos)"; // caso seja no plural
+            }
+        }
+    }
 }
 
 /*/------------------- MÉTODOS DE IMPRESSÃO TOSTRING ------------------
-
-    public String toString(Partido[] part){
-        for(int i = 0; i < part.length; i++){
-            if(part[i].comparaPartido(this.numero_partido)){
-                String print = this.getNome() + " / " + this.getNome_urna() + " (" + part[i].getSigla_partido() + ", " + Integer.toString(this.getVotos_nominais());
-                StringBuilder s = new StringBuilder(print);
-                if(this.getVotos_nominais() <= 1){
-                    s.append(" voto)"); // caso seja no singular
-                }
-                else{
-                    s.append(" votos)"); // caso seja no plural
-                }
-                print = s.toString();
-                return print;
-            }
-        }
-        return "erro";
-    }
 
     public String toString(Partido[] part, String nome, int num, int votos){
         for(int i = 0; i < part.length; i++){

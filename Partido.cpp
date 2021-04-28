@@ -40,7 +40,7 @@ int Partido::getVotos_total() {
     return this->votos_total;
 }
 void Partido::setVotos_total(int votos_total) {
-    this->votos_total = this->votos_nominais + this->votos_legenda + votos_total;
+    this->votos_total = this->votos_nominais + this->votos_legenda;
 }
 int Partido::getVotos_nominais() {
     return this->votos_nominais;
@@ -64,14 +64,34 @@ bool Partido::comparaPartido(int numeroId){
 }
 
 void Partido::imprimePartido(){
-    cout 
-    << this->getNome_partido() 
-    << ", " 
-    << this->getNumero_partido() 
-    << ", " 
-    << this->getSigla_partido() 
-    << ", " 
-    << this->getVotos_legenda() 
-    << endl;
+    cout << this->sigla_partido << " - " << this->numero_partido << ", " << this->votos_total;
+          
+        if(this->getVotos_total() <= 1){
+           cout << " voto ("; // caso seja no singular
+        }
+        else{
+            cout << " votos ("; // caso seja no plural
+        }
+
+        cout << this->getVotos_nominais();
+
+        if(this->getVotos_nominais() <= 1){
+            cout << " nominal e "; // caso seja no singular
+        }
+        else{
+            cout << " nominais e "; // caso seja no plural
+        }
+
+        cout << this->getVotos_legenda() << " de legenda), " << this->getCand_eleitos();
+
+        if(this->getCand_eleitos() <= 1){
+            cout << " candidato eleito"; // caso seja no singular
+        }
+        else{
+            cout << " candidatos eleitos"; // caso seja no plural
+        }
+
+        cout << endl;
+        
 }
 

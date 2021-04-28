@@ -98,3 +98,89 @@ vector<Candidato> Inout::leCandidatos(string arq){
     return candidatos;
 }
 
+void Inout::imprimeNumVagas(int qtdEleitos){
+    cout << "Número de vagas: " << qtdEleitos << "\n";
+}
+void Inout::imprimeVereadoresEleitos(vector<Candidato> candidatosEleitos, vector<Partido> partidos){
+    cout << "Vereadores eleitos:" << endl;
+    int i = 1;
+    for(auto candidato : candidatosEleitos){
+        cout << i << " - ";
+        candidato.imprimeCandidatos(partidos);
+        i++;
+    }
+    
+}
+void Inout::imprimeMaisVotados(vector<Candidato> maisVotados, vector<Partido>  partidos){
+    cout << "\nCandidatos mais votados (em ordem decrescente de votação e respeitando número de vagas):" << endl; 
+    int i = 1;
+    for(auto candidato : maisVotados){
+        cout << i << " - ";
+        candidato.imprimeCandidatos(partidos);
+        i++;
+    }     
+    
+}
+void Inout::imprimeNaoEleitos(vector<Candidato> maisVotados, vector<Candidato> naoEleitos, vector<Partido> partidos){
+    cout << "\nTeriam sido eleitos se a votação fosse majoritária, e não foram eleitos:\n(com sua posição no ranking de mais votados)" << endl;
+    int i = 1;
+    for(auto candidatoPrim : naoEleitos){
+        for(auto candidatoSeg : maisVotados){
+            if(candidatoSeg.getNome() == candidatoPrim.getNome()){
+                cout << i << " - ";
+                candidatoPrim.imprimeCandidatos(partidos);                
+                break;
+            }
+            i++;
+        } 
+        i=1;
+    } 
+}
+void Inout::imprimeBeneficiados(vector<Candidato> candValidos, vector<Candidato> beneficiados, vector<Partido> partidos){
+    cout << "\nEleitos, que se beneficiaram do sistema proporcional:\n(com sua posição no ranking de mais votados)" << endl;
+    int i = 1;
+    for(auto beneficiados : beneficiados){
+        for(auto validos : candValidos){
+            if(validos.getNome() == beneficiados.getNome()){
+                cout << i << " - ";
+                beneficiados.imprimeCandidatos(partidos);                
+                break;
+            }
+            i++;
+        } 
+        i=1;
+    } 
+}
+void Inout::imprimePartidos(vector<Partido> partidos){
+    cout << "\nVotação dos partidos e número de candidatos eleitos:" << endl;
+    int i = 1;
+    for(auto partido : partidos){
+        cout << i << " - ";
+        partido.imprimePartido();
+        i++;
+    }
+    
+}
+void Inout::imprimePrimUlt(vector<Candidato> primeiros, vector<Candidato> ultimos, vector<Partido> partidos){
+
+}
+
+void Inout::imprimeRelatorios(
+    int qtdEleitos, 
+    vector<Candidato> candidatosEleitos, 
+    vector<Partido> partidos, 
+    vector<Candidato> maisVotados, 
+    vector<Candidato> naoEleitos,
+    vector<Candidato> candidatosValidos, 
+    vector<Candidato> beneficiados,
+    vector<Candidato> primeiros, 
+    vector<Candidato> ultimos
+){
+    this->imprimeNumVagas(qtdEleitos);
+    this->imprimeVereadoresEleitos(candidatosEleitos, partidos);
+    this->imprimeMaisVotados(maisVotados, partidos);
+    this->imprimeNaoEleitos(maisVotados, naoEleitos, partidos);
+    this->imprimeBeneficiados(candidatosValidos, beneficiados, partidos);
+    this->imprimePartidos(partidos);
+    this->imprimePrimUlt(primeiros, ultimos, partidos);
+}

@@ -29,8 +29,6 @@ int main(int argc, char* argv[]){
     // Conta o número de candidatos eleitos
     int qtdEleitos = info.retornaQtdEleitos(candidatos);
 
-    cout << qtdEleitos << endl;
-
     // Chama método para retornar candidatos validos
     vector<Candidato> candidatosValidos = info.retornaCandValidos(candidatos);
 
@@ -83,8 +81,10 @@ int main(int argc, char* argv[]){
 
     //------------------------IMPRESSÕES DO CÓDIGO-------------------------
 
-    for(auto candidato : candidatosEleitos)
-        candidato.imprimeCandidato();
+    in.imprimeRelatorios(
+        qtdEleitos, candidatosEleitos, partidos, maisVotados, 
+        naoEleitos, candidatosValidos, beneficiados, primeiros, ultimos
+    );
             
     
 }

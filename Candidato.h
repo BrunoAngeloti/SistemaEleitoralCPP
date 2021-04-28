@@ -1,5 +1,6 @@
 #ifndef CANDIDATO_H_
 #define CANDIDATO_H_
+#include "Partido.h"
 #include <list>
 #include <string>	
 #include <vector>	
@@ -8,11 +9,7 @@ using namespace std;
 class Candidato{
     public:
         Candidato(list<string> lista);
-        //Candidato(
-            //int numero, int votos_nominais, string situacao, string nome,
-            //string nome_urna, char sexo, string data_nasc, string destino_voto, int numero_partido
-        //);
-
+        
         string getNome(); 
         void setNome(string nome); 
 
@@ -46,7 +43,8 @@ class Candidato{
         bool comparaNumPartido(int numeroId);
         int retornaIdadeCandidato(string dataRef);
 
-        void imprimeCandidato();
+        void imprimeCandidatos(vector<Partido> part);
+        void imprime(vector<Partido> part, string nome, int num, int votos);
 
 
     private:
