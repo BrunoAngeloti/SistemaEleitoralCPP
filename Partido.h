@@ -1,5 +1,6 @@
 #ifndef PARTIDO_H_
 #define PARTIDO_H_
+#include <vector>
 #include <list>
 #include <string>		// Necessário para usar strings
 using namespace std;

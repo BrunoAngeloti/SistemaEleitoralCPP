@@ -1,16 +1,26 @@
 #include "Candidato.h"
 #include <iostream>
 
-Candidato::Candidato(int numero, int votos_nominais, string situacao, string nome, string nome_urna, char sexo, string data_nasc, string destino_voto, int numero_partido){
-    this->numero = numero;
-    this->votos_nominais = votos_nominais;
-    this->situacao = situacao;
-    this->nome = nome;
-    this->nome_urna = nome_urna;
-    this->sexo = sexo;
-    this->data_nasc = data_nasc;
-    this->destino_voto = destino_voto;
-    this->numero_partido = numero_partido;
+Candidato::Candidato(list<string> lista){
+    
+    vector<string> aux(lista.begin(), lista.end());
+    setNumero(stoi(aux[0]));
+
+    setVotos_nominais(stoi(aux[1]));
+
+    setSituacao(aux[2]);
+    
+    setNome(aux[3]);
+
+    setNome_urna(aux[4]);
+
+    setSexo(aux[5]);
+
+    setData_nasc(aux[6]);
+    
+    setDestino_voto(aux[7]);
+    
+    setNumero_partido(stoi(aux[8]));
 }
 
 string Candidato::getNome(){
@@ -20,10 +30,10 @@ void Candidato::setNome(string nome){
     this->nome = nome;
 }
 
-char Candidato::getSexo(){
+string Candidato::getSexo(){
     return sexo;
 }
-void Candidato::setSexo(char sexo){
+void Candidato::setSexo(string sexo){
     this->sexo = sexo;
 } 
 
@@ -113,6 +123,18 @@ int Candidato::retornaIdadeCandidato(string dataRef){
         return (stoi(dataAtual[2]) - stoi(dataCand[2]) - 1);
     }
         
+}
+
+void Candidato::imprimeCandidato(){
+    cout 
+    << this->getNome() 
+    << ", " 
+    << this->getNumero_partido() 
+    << ", " 
+    << this->getData_nasc() 
+    << ", " 
+    << this->getSexo() 
+    << endl;
 }
 
 /*/------------------- MÉTODOS DE IMPRESSÃO TOSTRING ------------------

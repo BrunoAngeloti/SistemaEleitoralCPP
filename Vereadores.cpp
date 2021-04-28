@@ -9,13 +9,23 @@
 
 
 int main(int argc, char* argv[]){
+    if(argc < 2){
+        cout << "Insira um arquivo de entrada!" << endl;
+        return 0;
+    } 
 
     Inout* in = new Inout();
 
     vector<Partido> listaPartidos = in->lePartidos(argv[1]);
-    
+    vector<Candidato> listaCandidatos = in->leCandidatos(argv[2]);
+
     for(auto partido : listaPartidos)
         partido.imprimePartido();
+
+    cout << "\n\n\n";
+    
+    for(auto candidato : listaCandidatos)
+        candidato.imprimeCandidato();
              
     delete(in);
     

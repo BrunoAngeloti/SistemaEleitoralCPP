@@ -3,12 +3,14 @@
 
 #include <string>	
 #include <vector>
-#include "Partido.h"	
+#include "Partido.h"
+#include "Candidato.h"	
 using namespace std;
 
 class Inout{
     public:
         vector<Partido> lePartidos(string arq);
+        vector<Candidato> leCandidatos(string arq);
     private:
         
 };
