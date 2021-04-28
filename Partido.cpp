@@ -1,11 +1,18 @@
 #include "Partido.h"
 #include <iostream>
 
-Partido::Partido(int numero_partido, int votos_legenda, string nome_partido, string sigla_partido){
-    setNumero_partido(numero_partido);
-    setVotos_legenda(votos_legenda);
-    setNome_partido(nome_partido);
-    setSigla_partido(sigla_partido);
+Partido::Partido(list<string> lista){
+    
+    setNumero_partido(stoi(lista.front()));
+    lista.pop_front();
+
+    setVotos_legenda(stoi(lista.front()));
+    lista.pop_front();
+
+    setNome_partido(lista.front());
+    lista.pop_front();
+
+    setSigla_partido(lista.front());
     setVotos_total(0);
     setVotos_nominais(0);
     setCand_eleitos(0);
@@ -60,6 +67,10 @@ bool Partido::comparaPartido(int numeroId){
         return true;
     }
     return false;
+}
+
+void Partido::imprimePartido(){
+    cout << this->getNome_partido() << ", " << this->getNumero_partido() << ", " << this->getSigla_partido() << ", " << this->getVotos_legenda() << endl;
 }
 
 /*//------------------- MÉTODO DE COMPARAÇÃO PARA O ARRAYS.SORT ------------------

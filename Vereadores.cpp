@@ -1,13 +1,25 @@
 #include <iostream>
+#include <list>
+#include "Inout.h"
 #include "Candidato.h"
 #include "Partido.h"
 
 //#include "Informacoes.h"
-//#include "Inout.h"
+
 
 int main(int argc, char* argv[]){
-    Partido* part1 = new Partido(15, 150, "Partido Dos Trabalhadores", "PT");
-    Partido* part2 = new Partido(65, 123, "Movimento Democrático Brasileiro", "MDB");
+
+    Inout* in = new Inout();
+
+    list<Partido> listaPartidos = in->lePartidos("./testes/serra/in/partidos.csv");
+    
+    for(auto partido : listaPartidos)
+        partido.imprimePartido();
+             
+    delete(in);
+    
+
+    /*
 
     Candidato* cand1 = new Candidato(59, 475, "Eleito", "Bruno Angeloti", "Brunin de JP", 'I', "11/11/2001", "Válido", 15);
     Candidato* cand2 = new Candidato(85, 538, "Eleito", "Victoria Louzada", "Vivi do RJ", 'F', "05/01/2001", "Válido", 65);
@@ -19,6 +31,6 @@ int main(int argc, char* argv[]){
     cout << "Candidata: " << cand2->getNome() << ", Nascimento: " << cand2->getData_nasc() << "\n\n";
 
     int t = cand1->retornaIdadeCandidato("11/11/2021");
-    cout << "Idade Bruno: " << t << "\n\n";
+    cout << "Idade Bruno: " << t << "\n\n";*/
     
 }

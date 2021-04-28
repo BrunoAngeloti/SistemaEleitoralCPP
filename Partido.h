@@ -1,13 +1,13 @@
 #ifndef PARTIDO_H_
 #define PARTIDO_H_
-
+#include <list>
 #include <string>		// Necessário para usar strings
 using namespace std;
 
 class Partido{
     public:
-        Partido(int numero_partido, int votos_legenda, string nome_partido, string sigla_partido);
-
+       // Partido(int numero_partido, int votos_legenda, string nome_partido, string sigla_partido);
+        Partido(list<string> lista);
         int getNumero_partido();
         void setNumero_partido(int numero_partido);
 
@@ -30,6 +30,8 @@ class Partido{
         void setCand_eleitos(int cand_eleitos); 
 
         bool comparaPartido(int numeroId);
+
+        void imprimePartido();
   
     private:
         int numero_partido;
