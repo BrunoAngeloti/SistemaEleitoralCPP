@@ -118,6 +118,7 @@ int Candidato::retornaIdadeCandidato(string dataRef){
         
 }
 
+//------------------- MÉTODOS DE IMPRESSÃO TOSTRING ------------------
 void Candidato::imprimeCandidatos(vector<Partido> part){
     for(auto partido : part){
         if(partido.comparaPartido(this->numero_partido)){
@@ -153,37 +154,11 @@ void Candidato::imprime(vector<Partido> part, string nome, int num, int votos){
             else{
                 cout << " votos)"; // caso seja no plural
             }
-            cout << "ue" << endl;
+            cout << endl;
         }
     }
-    
 }
 
-/*/------------------- MÉTODOS DE IMPRESSÃO TOSTRING ------------------
 
-    public String toString(Partido[] part, String nome, int num, int votos){
-        for(int i = 0; i < part.length; i++){
-            if(part[i].comparaPartido(this.numero_partido)){  
-                String print = part[i].getSigla_partido() + " - " + this.getNumero_partido() + ", " + this.getNome_urna() + " (" + this.getNumero() + ", " + this.getVotos_nominais();
-                StringBuilder s = new StringBuilder(print);
-                if(this.getVotos_nominais() <= 1){
-                    s.append(" voto) / " + nome + " (" + num + ", " + votos); // caso seja no singular
-                }
-                else{
-                    s.append(" votos) / " + nome + " (" + num + ", " + votos); // caso seja no plural
-                }
-                
-                if(votos <= 1){
-                    s.append(" voto)"); // caso seja no singular
-                }
-                else{
-                    s.append(" votos)"); // caso seja no plural
-                }
-                
-                print = s.toString();
-                return print;
-            }
-        }
-        return "erro";
-    }
-    */
+
+    

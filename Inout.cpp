@@ -206,3 +206,21 @@ void Inout::imprimeRelatorios(
     this->imprimePartidos(partidos);
     this->imprimePrimUlt(primeiros, ultimos, partidos);
 }
+
+void Inout::imprimeIdadeSexoVoto(vector<int> idades, vector<int> sexos, vector<int> votos, int qtdEleitos){
+        cout << "\nEleitos, por faixa etária (na data da eleição):" << endl;
+        
+        cout << "      Idade < 30: " << idades[0] << " (" << ((double)idades[0]/qtdEleitos*100) << "%)" << endl;
+        cout << "30 <= Idade < 40: " << idades[1] << " (" << ((double)idades[1]/qtdEleitos*100) << "%)" << endl;
+        cout << "40 <= Idade < 50: " << idades[2] << " (" << ((double)idades[2]/qtdEleitos*100) << "%)" << endl; 
+        cout << "50 <= Idade < 60: " << idades[3] << " (" << ((double)idades[3]/qtdEleitos*100) << "%)" << endl;
+        cout << "60 <= Idade     : " << idades[4] << " (" << ((double)idades[4]/qtdEleitos*100) << "%)" << endl;
+
+        cout << "\nEleitos, por sexo:" << endl;
+        cout << "Feminino:  " << sexos[1] << " (" << ((double)sexos[1]/qtdEleitos*100) << "%)" << endl;
+        cout << "Masculino: " << sexos[0] << " (" << ((double)sexos[0]/qtdEleitos*100) << "%)" << endl;
+
+        cout << "\nTotal de votos válidos:    " << votos[0]  << endl;
+        cout << "Total de votos nominais:   " << votos[1] << " (" << ((double)votos[1]/votos[0]*100) << "%)" << endl;
+        cout << "Total de votos de Legenda: " << votos[2] << " (" << ((double)votos[2]/votos[0]*100) << "%)" << endl;
+    }

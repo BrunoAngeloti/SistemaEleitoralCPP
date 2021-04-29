@@ -22,7 +22,7 @@ class Inout{
             vector<Candidato> primeiros, 
             vector<Candidato> ultimos
         );
-        void imprimeIdadeSexoVoto(vector<string> idades, vector<string> sexos, vector<string> votos, int qtdEleitos);
+        void imprimeIdadeSexoVoto(vector<int> idades, vector<int> sexos, vector<int> votos, int qtdEleitos);
     private:
         void imprimeNumVagas(int qtdEleitos);
         void imprimeVereadoresEleitos(vector<Candidato> candidatosEleitos, vector<Partido> partidos);

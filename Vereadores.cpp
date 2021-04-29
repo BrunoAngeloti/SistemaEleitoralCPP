@@ -85,6 +85,8 @@ int main(int argc, char* argv[]){
         qtdEleitos, candidatosEleitos, partidos, maisVotados, 
         naoEleitos, candidatosValidos, beneficiados, primeiros, ultimos
     );
+
+    in.imprimeIdadeSexoVoto(idades, sexos, votos, qtdEleitos);
             
     
 }
