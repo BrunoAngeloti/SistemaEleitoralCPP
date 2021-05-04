@@ -32,6 +32,7 @@ class Inout{
         void imprimeBeneficiados(vector<Candidato> & candValidos, vector<Candidato> & beneficiados, vector<Partido> & partidos);
         void imprimePartidos(vector<Partido> & partidos);
         void imprimePrimUlt(vector<Candidato> & primeiros, vector<Candidato> & ultimos, vector<Partido> & partidos);
+        string formatDoubleCurrency(const double num);
 };
 
 #endif

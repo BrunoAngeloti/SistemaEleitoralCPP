@@ -221,8 +221,8 @@ void Inout::imprimeRelatorios(
     this->imprimePrimUlt(primeiros, ultimos, partidos);
 }
 
-/* Converts decimal numbers from double format to currency, following a locale configuration. */
-string formatDoubleCurrency(const double num) {
+// Convertendo o numero double para uma string no formato de acordo com o locale definido.
+string Inout::formatDoubleCurrency(const double num) {
 	// Creates an empty string stream and applies the specified locale to it.
 	stringstream stream;
 	stream.imbue(locale("pt_BR.UTF-8"));
