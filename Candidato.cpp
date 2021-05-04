@@ -1,5 +1,6 @@
 #include "Candidato.h"
 #include <iostream>
+#include <locale>
 
 Candidato::Candidato(list<string> lista){
     
@@ -47,6 +48,7 @@ void Candidato::setNumero(int numero){
 int Candidato::getNumero_partido(){
     return numero_partido;
 }
+
 void Candidato::setNumero_partido(int numero_partido){
     this->numero_partido = numero_partido;
 }
@@ -54,6 +56,7 @@ void Candidato::setNumero_partido(int numero_partido){
 int Candidato::getVotos_nominais(){
     return votos_nominais;
 } 
+
 void Candidato::setVotos_nominais(int votos_nominais){
     this->votos_nominais = votos_nominais;
 }
@@ -61,13 +64,15 @@ void Candidato::setVotos_nominais(int votos_nominais){
 string Candidato::getSituacao(){
     return situacao;
 } 
+
 void Candidato::setSituacao(string situacao){
     this->situacao = situacao;
 }
 
 string Candidato::getNome_urna(){
     return nome_urna;
-} 
+}
+
 void Candidato::setNome_urna(string nome_urna){
     this->nome_urna = nome_urna;
 } 
@@ -75,6 +80,7 @@ void Candidato::setNome_urna(string nome_urna){
 string Candidato::getDestino_voto(){
     return destino_voto;
 } 
+
 void Candidato::setDestino_voto(string destino_voto){
     this->destino_voto = destino_voto;
 }
@@ -119,7 +125,7 @@ int Candidato::retornaIdadeCandidato(string dataRef){
 }
 
 //------------------- MÉTODOS DE IMPRESSÃO TOSTRING ------------------
-void Candidato::imprimeCandidatos(vector<Partido> part){
+void Candidato::imprimeCandidatos(vector<Partido> & part){
     for(auto partido : part){
         if(partido.comparaPartido(this->numero_partido)){
             cout << this->getNome() << " / " << this->getNome_urna() << " (" << partido.getSigla_partido() << ", " << this->getVotos_nominais();
@@ -136,7 +142,8 @@ void Candidato::imprimeCandidatos(vector<Partido> part){
     }
 }
 
-void Candidato::imprime(vector<Partido> part, string nome, int num, int votos){
+void Candidato::imprime(vector<Partido> & part, string nome, int num, int votos){
+    std::cout.imbue(std::locale("pt_BR.UTF-8"));
     for(auto partido : part){
         if(partido.comparaPartido(this->numero_partido)){  
             cout << partido.getSigla_partido() << " - " << this->getNumero_partido() << ", " << this->getNome_urna() << " (" << this->getNumero() << ", " << this->getVotos_nominais();

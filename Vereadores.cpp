@@ -1,11 +1,12 @@
 #include <iostream>
 #include <list>
 #include <vector>
+#include <locale>
 #include "Inout.h"
 #include "Partido.h"
 #include "Informacoes.h"
 #include "Candidato.h"
-
+using namespace std;
 
 int main(int argc, char* argv[]){
     if(argc != 4){
@@ -33,7 +34,9 @@ int main(int argc, char* argv[]){
     vector<Candidato> candidatosValidos = info.retornaCandValidos(candidatos);
 
     // Organiza os candidatos válidos por ordem de mais votados
-    candidatosValidos = info.ordenaCandidatos(candidatosValidos);
+    //candidatosValidos = 
+    info.ordenaCandidatos(candidatosValidos);
+    //info.ordenaCandidatos(&candidatosValidos);
 
 
     //-------------------ANALISA CANDIDATOS--------------------
@@ -54,19 +57,20 @@ int main(int argc, char* argv[]){
     //--------------ANALISA VOTOS PARTIDO---------------
 
     // Identifica o total de votos de cada partido
-    partidos = info.analisaVotosPartidos(partidos, candidatosValidos);
+    info.analisaVotosPartidos(partidos, candidatosValidos);
 
     // Identifica quantos candidatos foram eleitos de cada partido
-    partidos = info.identificaEleitosPartidos(partidos, candidatosEleitos);
+    info.identificaEleitosPartidos(partidos, candidatosEleitos);
 
     // Organiza os partidos por maior numero de votos no total
-    partidos = info.ordenaPartidos(partidos);
+    //partidos = info.ordenaPartidos(partidos);
+    info.ordenaPartidos(partidos);
 
     // Armazena o primeiro candidato de cada partido
     vector<Candidato> primeiros = info.identificaPrimeirosPartido(partidos, candidatosValidos);
 
     // Organiza os primeiros candidatos dos partidos por maior numero de votos nominais
-    primeiros = info.ordenaCandidatosNumPartido(primeiros);
+    info.ordenaCandidatosNumPartido(primeiros);
 
     // Armazena o ultimo candidato de cada partido
     vector<Candidato> ultimos = info.identificaUltimosPartido(partidos, candidatosValidos, primeiros);

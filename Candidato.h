@@ -43,8 +43,8 @@ class Candidato{
         bool comparaNumPartido(int numeroId);
         int retornaIdadeCandidato(string dataRef);
 
-        void imprimeCandidatos(vector<Partido> part);
-        void imprime(vector<Partido> part, string nome, int num, int votos);
+        void imprimeCandidatos(vector<Partido> & part);
+        void imprime(vector<Partido> & part, string nome, int num, int votos);
 
 
     private:
