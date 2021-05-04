@@ -8,7 +8,7 @@
 using namespace std;
 
 int main(int argc, char* argv[]){
-    if(argc != 4){
+    if(argc < 4){
         cout << "Insira uma quantidade correta de argumentos!" << endl;
         cout << "./<executavel> <diretório arquivo candidatos> <diretório arquivo partidos> <data da eleição>" << endl;
         return 0;

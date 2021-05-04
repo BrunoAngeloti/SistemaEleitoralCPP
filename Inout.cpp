@@ -249,5 +249,5 @@ void Inout::imprimeIdadeSexoVoto(vector<int> & idades, vector<int> & sexos, vect
 
         cout << "\nTotal de votos válidos:    " << votos[0]  << endl;
         cout << "Total de votos nominais:   " << votos[1] << " (" << (formatDoubleCurrency((double)votos[1]/votos[0]*100)) << "%)" << endl;
-        cout << "Total de votos de Legenda: " << votos[2] << " (" << (formatDoubleCurrency((double)votos[2]/votos[0]*100)) << "%)" << endl;
+        cout << "Total de votos de Legenda: " << votos[2] << " (" << (formatDoubleCurrency((double)votos[2]/votos[0]*100)) << "%)" << "\n\n";
     }
