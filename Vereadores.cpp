@@ -1,7 +1,6 @@
 #include <iostream>
 #include <list>
 #include <vector>
-#include <locale>
 #include "Inout.h"
 #include "Partido.h"
 #include "Informacoes.h"
@@ -16,7 +15,6 @@ int main(int argc, char* argv[]){
     } 
 
     //------------------Leitura arquivos---------------------
-
     Inout in = Inout();
     Informacoes info = Informacoes();
     string fileCandidatos = argv[1];

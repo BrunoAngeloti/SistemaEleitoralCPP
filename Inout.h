@@ -10,6 +10,7 @@ using namespace std;
 class Inout{
     public:
         vector<Partido> lePartidos(string arq);
+        
         vector<Candidato> leCandidatos(string arq);
         void imprimeRelatorios(
             int qtdEleitos, 

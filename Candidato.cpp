@@ -143,7 +143,7 @@ void Candidato::imprimeCandidatos(vector<Partido> & part){
 }
 
 void Candidato::imprime(vector<Partido> & part, string nome, int num, int votos){
-    std::cout.imbue(std::locale("pt_BR.UTF-8"));
+    
     for(auto partido : part){
         if(partido.comparaPartido(this->numero_partido)){  
             cout << partido.getSigla_partido() << " - " << this->getNumero_partido() << ", " << this->getNome_urna() << " (" << this->getNumero() << ", " << this->getVotos_nominais();
