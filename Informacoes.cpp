@@ -2,14 +2,14 @@
 #include <iostream>
 #include <algorithm>
 
-bool ordenaVotosPartidos(Partido A, Partido B){
+//Método privado de ordenação dos partidos por numero de votos e desempate por numero do partido
+bool ordenaVotosPartidos(const Partido& A, const Partido& B) {
     if(A.getVotos_total() > B.getVotos_total()){
         return true;
     } 
     else if(A.getVotos_total() < B.getVotos_total()){
         return false;
     }else{
-        
         if(A.getNumero_partido() < B.getNumero_partido()){
             return true;
         }else{
@@ -19,7 +19,8 @@ bool ordenaVotosPartidos(Partido A, Partido B){
     return false;
 }
 
-bool ordenaVotosCandidatos(Candidato A, Candidato B){
+//Método privado de ordenação dos candidatos por numero de votos e desempate por idade
+bool ordenaVotosCandidatos(const Candidato& A, const Candidato& B) {
 
     string dataCand1[3];
     string dataCand2[3];
@@ -32,8 +33,6 @@ bool ordenaVotosCandidatos(Candidato A, Candidato B){
     dataCand2[1] = (B.getData_nasc()).substr(3,2);
     dataCand2[2] = (B.getData_nasc()).substr(6);
 
-
-
     if(A.getVotos_nominais() > B.getVotos_nominais()){
         return true;
     }
@@ -41,41 +40,42 @@ bool ordenaVotosCandidatos(Candidato A, Candidato B){
         return false;
     }else{
         // Em caso de empate, o candidato mais velho terá prioridade 
-                if(stoi(dataCand1[2]) < stoi(dataCand2[2])){ // retorna -1, o cand1 é mais velho
+        if(stoi(dataCand1[2]) < stoi(dataCand2[2])){ // retorna -1, o cand1 é mais velho
+            return true;
+        }
+        else if(stoi(dataCand1[2]) > stoi(dataCand2[2])){ // retorna 1, o cand2 é o mais velho
+            return false;
+        }
+        else{
+            if(stoi(dataCand1[1]) < stoi(dataCand2[1])){ // retorna -1, o cand1 é mais velho
+                return true;
+            }
+            else if(stoi(dataCand1[1]) > stoi(dataCand2[1])){ // retorna 1, o cand2 é o mais velho
+                return false;
+            }
+            else{
+                if(stoi(dataCand1[0]) < stoi(dataCand2[0])){ // retorna true, o cand1 é mais velho
                     return true;
                 }
-                else if(stoi(dataCand1[2]) > stoi(dataCand2[2])){ // retorna 1, o cand2 é o mais velho
+                else if(stoi(dataCand1[0]) > stoi(dataCand2[0])){ // retorna 1, o cand2 é o mais velho
                     return false;
                 }
                 else{
-                    if(stoi(dataCand1[1]) < stoi(dataCand2[1])){ // retorna -1, o cand1 é mais velho
+                    // Caso eles tiverem a mesma idade, número do candidato irá desempatar
+                    if(A.getNumero() < B.getNumero()){
                         return true;
                     }
-                    else if(stoi(dataCand1[1]) > stoi(dataCand2[1])){ // retorna 1, o cand2 é o mais velho
+                    else{
                         return false;
                     }
-                    else{
-                        if(stoi(dataCand1[0]) < stoi(dataCand2[0])){ // retorna true, o cand1 é mais velho
-                            return true;
-                        }
-                        else if(stoi(dataCand1[0]) > stoi(dataCand2[0])){ // retorna 1, o cand2 é o mais velho
-                            return false;
-                        }
-                        else{
-                            // Caso eles tiverem a mesma idade, número do candidato irá desempatar
-                            if(A.getNumero() < B.getNumero()){
-                                return true;
-                            }
-                            else{
-                                return false;
-                            }
-                        }
-                    }
                 }
+            }
+        }
     }
 }
 
-bool ordenaVotosCandidatos2(Candidato A, Candidato B){
+//Método privado de ordenação dos candidatos por numero de votos e desempate por numero do partido
+bool ordenaVotosCandidatos2(const Candidato& A, const Candidato& B) {
     if(A.getVotos_nominais() > B.getVotos_nominais()){
         return true; 
     }
@@ -91,24 +91,23 @@ bool ordenaVotosCandidatos2(Candidato A, Candidato B){
     }
 }
 
+
+// ------------------ METODOS DE ORDENAÇÃO DE VETORES ------------------
 void Informacoes::ordenaPartidos(vector<Partido> & partidos){
     sort(partidos.begin(), partidos.end(), ordenaVotosPartidos);
-  //  return partidos;
 }
 
 void Informacoes::ordenaCandidatos(vector<Candidato> & candidatos){
-    sort(candidatos.begin(), candidatos.end(), ordenaVotosCandidatos);
-    //return candidatos;
+    sort(candidatos.begin(), candidatos.end(), ordenaVotosCandidatos);  
 }
 
 void Informacoes::ordenaCandidatosNumPartido(vector<Candidato> & candidatos){
     sort(candidatos.begin(), candidatos.end(), ordenaVotosCandidatos2);
-   // return candidatos;
 }
 
 
 // ------------------ METODOS DE RETORNO DE QUANTIDADES ESPECIFICAS ------------------
-int Informacoes::retornaQtdEleitos(vector<Candidato> & cand){ 
+int Informacoes::retornaQtdEleitos(const vector<Candidato>& cand) const{ 
     int aux = 0; 
     for(int i = 0; i < cand.size(); i++){ 
         if(cand[i].identificaEleitos()){ 
@@ -118,7 +117,7 @@ int Informacoes::retornaQtdEleitos(vector<Candidato> & cand){
     return aux;
 }
 
-int Informacoes::retornaQtdValidos(vector<Candidato> & cand){ 
+int Informacoes::retornaQtdValidos(const vector<Candidato>& cand) const{ 
     int aux = 0;
     for(int i = 0; i < cand.size(); i++){ 
         if(cand[i].identificaValidade()){ 
@@ -128,7 +127,7 @@ int Informacoes::retornaQtdValidos(vector<Candidato> & cand){
     return aux;
 }
 
-int Informacoes::retornaQtdBeneficiados(vector<Candidato> & candEleitos, vector<Candidato> & maisVotados){
+int Informacoes::retornaQtdBeneficiados(const vector<Candidato>& candEleitos, const vector<Candidato>& maisVotados) const{
     int aux = 0;
     for(int i = 0; i < candEleitos.size(); i++){
         for(int j = 0; j < candEleitos.size(); j++){
@@ -146,19 +145,19 @@ int Informacoes::retornaQtdBeneficiados(vector<Candidato> & candEleitos, vector<
 }
 
 
-    // ---------------- MÉTODOS PARA RETORNAR VETORES DE CANDIDATOS ESPECIFICOS -----------------
-vector<Candidato> Informacoes::retornaCandValidos(vector<Candidato> & cand) {
+// ---------------- MÉTODOS PARA RETORNAR VETORES DE CANDIDATOS ESPECIFICOS -----------------
+vector<Candidato> Informacoes::retornaCandValidos(const vector<Candidato>& cand) const{
     vector<Candidato> candValidos;
     for(int i = 0, j = 0; i < cand.size(); i++){ 
         if(cand[i].identificaValidade()){ 
             candValidos.push_back(cand[i]);
             j++;
-        }
+        }       
     }
     return candValidos;
 }
 
-vector<Candidato> Informacoes::retornaCandEleitos(vector<Candidato> & candValidos) {
+vector<Candidato> Informacoes::retornaCandEleitos(const vector<Candidato>& candValidos) const{
     vector<Candidato> candEleitos;
     for(int i = 0, j = 0; i < candValidos.size(); i++){ 
         if(candValidos[i].identificaEleitos()){ 
@@ -169,7 +168,7 @@ vector<Candidato> Informacoes::retornaCandEleitos(vector<Candidato> & candValido
     return candEleitos;
 }
 
-vector<Candidato> Informacoes::retornaCandsMaisVotados(vector<Candidato> & candValidos, int qtdEleitos) {
+vector<Candidato> Informacoes::retornaCandsMaisVotados(const vector<Candidato>& candValidos, const int qtdEleitos) const{
     vector<Candidato> maisVotados;
     for(int i = 0; i < qtdEleitos; i++){ 
         maisVotados.push_back(candValidos[i]);
@@ -177,7 +176,7 @@ vector<Candidato> Informacoes::retornaCandsMaisVotados(vector<Candidato> & candV
     return maisVotados;
 }
 
-vector<Candidato> Informacoes::identificaBeneficiados(vector<Candidato> & candEleitos, vector<Candidato> & maisVotados){
+vector<Candidato> Informacoes::identificaBeneficiados(const vector<Candidato>& candEleitos, const vector<Candidato>& maisVotados) const{
     vector<Candidato> beneficiados;
     for(int i = 0; i < candEleitos.size(); i++){
         for(int j = 0; j < candEleitos.size(); j++){
@@ -194,7 +193,7 @@ vector<Candidato> Informacoes::identificaBeneficiados(vector<Candidato> & candEl
     return beneficiados;
 }
 
-vector<Candidato> Informacoes::identificaNaoEleitos(vector<Candidato> & candEleitos, vector<Candidato> & maisVotados){
+vector<Candidato> Informacoes::identificaNaoEleitos(const vector<Candidato>& candEleitos, const vector<Candidato>& maisVotados) const{
     vector<Candidato> naoEleitos;
 
     for(int i = 0; i < candEleitos.size(); i++){
@@ -212,7 +211,7 @@ vector<Candidato> Informacoes::identificaNaoEleitos(vector<Candidato> & candElei
     return naoEleitos; 
 }
 
-void Informacoes::analisaVotosPartidos(vector<Partido> & p, vector<Candidato> & candValidos){
+void Informacoes::analisaVotosPartidos(vector<Partido>& p, vector<Candidato>& candValidos){
     for(int i = 0; i < p.size(); i++){
         int total = 0;
         for(int j = 0; j < candValidos.size(); j++){
@@ -223,10 +222,9 @@ void Informacoes::analisaVotosPartidos(vector<Partido> & p, vector<Candidato> & 
         p[i].setVotos_nominais(total);
         p[i].setVotos_total(total);
     }
-    //return p;
 }
 
-void Informacoes::identificaEleitosPartidos(vector<Partido> & p, vector<Candidato> & candEleitos){
+void Informacoes::identificaEleitosPartidos(vector<Partido>& p, vector<Candidato>& candEleitos){
     for(int i = 0; i < p.size(); i++){
         int eleitos = 0;
         for(int j = 0; j < candEleitos.size(); j++){ 
@@ -236,44 +234,39 @@ void Informacoes::identificaEleitosPartidos(vector<Partido> & p, vector<Candidat
         }
         p[i].setCand_eleitos(eleitos);
     }
-   // return p;
 }
 
-vector<Candidato> Informacoes::identificaPrimeirosPartido(vector<Partido> & p, vector<Candidato> & candValidos){
-    int k = 0;
-        vector<Candidato> primeiros;
-        for(int i = 0; i < p.size(); i++){
-            bool naoValido = true;
-            for(int j = 0; j < candValidos.size(); j++){
-                if(p[i].comparaPartido(candValidos[j].getNumero_partido())){
-                    primeiros.push_back(candValidos[j]);  
-                    k++;
-                    naoValido = false;
-                    break;       
-                }
-            }
-            // Caso nao encontrar um candidato válido do partido, setar candidato como nullo
-            if(naoValido){
-                list<string>aux;  
-                aux.push_back("0");
-                aux.push_back("0");
-                aux.push_back("\0");
-                aux.push_back("\0");
-                aux.push_back("\0");
-                aux.push_back("n");
-                aux.push_back("\0");
-                aux.push_back("\0");
-                aux.push_back(to_string(p[i].getNumero_partido()));
-                Candidato cand = Candidato(aux);
-                primeiros.push_back(cand);
-                //k++;
+vector<Candidato> Informacoes::identificaPrimeirosPartido(const vector<Partido>& p, const vector<Candidato>& candValidos) const{
+    vector<Candidato> primeiros;
+    for(int i = 0; i < p.size(); i++){
+        bool naoValido = true;
+        for(int j = 0; j < candValidos.size(); j++){
+            if(p[i].comparaPartido(candValidos[j].getNumero_partido())){
+                primeiros.push_back(candValidos[j]);  
+                naoValido = false;
+                break;       
             }
         }
+        // Caso nao encontrar um candidato válido do partido, setar candidato como nullo
+        if(naoValido){
+            list<string>aux;  
+            aux.push_back("0");
+            aux.push_back("0");
+            aux.push_back("\0");
+            aux.push_back("\0");
+            aux.push_back("\0");
+            aux.push_back("n");
+            aux.push_back("\0");
+            aux.push_back("\0");
+            aux.push_back(to_string(p[i].getNumero_partido()));
+            Candidato cand = Candidato(aux);
+            primeiros.push_back(cand);
+        }
+    }
     return primeiros;
 }
 
-vector<Candidato> Informacoes::identificaUltimosPartido(vector<Partido> & p, vector<Candidato> & candValidos, vector<Candidato> & prim){
-    int k = 0;
+vector<Candidato> Informacoes::identificaUltimosPartido(const vector<Partido>& p, const vector<Candidato>& candValidos, const vector<Candidato>& prim) const{
     vector<Candidato> ultimos;
 
     for(int i = 0; i < p.size(); i++){
@@ -281,7 +274,6 @@ vector<Candidato> Informacoes::identificaUltimosPartido(vector<Partido> & p, vec
         for(int j = (candValidos.size() - 1); j >= 0; j--){               
             if(prim[i].comparaNumPartido(candValidos[j].getNumero_partido())){                      
                 ultimos.push_back(candValidos[j]); 
-                k++;
                 naoValido = false;
                 break;     
             }                          
@@ -300,14 +292,14 @@ vector<Candidato> Informacoes::identificaUltimosPartido(vector<Partido> & p, vec
             aux.push_back(to_string(p[i].getNumero_partido()));
             Candidato cand = Candidato(aux);
             ultimos.push_back(cand);
-            k++;
         }
     }
     return ultimos;
 }
 
+
 // ---------------- MÉTODOS PARA RETORNAR IDADES, SEXOS E O NUMERO DE VOTOS TOTAL -----------------
-vector<int> Informacoes::retornaIdades(vector<Candidato> & candEleitos, string data){
+vector<int> Informacoes::retornaIdades(const vector<Candidato>& candEleitos, const string& data) const{
     vector<int> idades = {0, 0, 0, 0, 0};
 
     for(int i=0; i<candEleitos.size(); i++){
@@ -327,7 +319,7 @@ vector<int> Informacoes::retornaIdades(vector<Candidato> & candEleitos, string d
     return idades; 
 }
 
-vector<int> Informacoes::retornaSexos(vector<Candidato> & candEleitos){
+vector<int> Informacoes::retornaSexos(const vector<Candidato> & candEleitos) const{
     vector<int> sexos = {0, 0};
     for(int i=0; i<candEleitos.size(); i++){
         if(candEleitos[i].getSexo() == "M"){
@@ -339,7 +331,7 @@ vector<int> Informacoes::retornaSexos(vector<Candidato> & candEleitos){
     return sexos;
 }
 
-vector<int> Informacoes::retornaVotos(vector<Partido> & partidos){
+vector<int> Informacoes::retornaVotos(const vector<Partido> & partidos) const{
     vector<int> votos = {0, 0, 0};
     for(int i=0; i<partidos.size(); i++){
         votos[2] = votos[2] + partidos[i].getVotos_legenda(); // Total votos legenda

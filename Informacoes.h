@@ -6,41 +6,41 @@ using namespace std;
 
 class Informacoes{
     public:
-        void ordenaPartidos(vector<Partido> & partidos);
+        void ordenaPartidos(vector<Partido>& partidos);
 
-        void ordenaCandidatos(vector<Candidato> & candidatos);
+        void ordenaCandidatos(vector<Candidato>& candidatos);
 
-        void ordenaCandidatosNumPartido(vector<Candidato> & candidatos);
+        void ordenaCandidatosNumPartido(vector<Candidato>& candidatos);
 
-        int retornaQtdEleitos(vector<Candidato> & cand);
+        int retornaQtdEleitos(const vector<Candidato>& cand) const;
 
-        int retornaQtdValidos(vector<Candidato> & cand);
+        int retornaQtdValidos(const vector<Candidato>& cand) const;
 
-        int retornaQtdBeneficiados(vector<Candidato> & candEleitos, vector<Candidato> & maisVotados);
+        int retornaQtdBeneficiados(const vector<Candidato>& candEleitos, const vector<Candidato>& maisVotados) const;
 
-        vector<Candidato> retornaCandValidos(vector<Candidato> & cand);
+        vector<Candidato> retornaCandValidos(const vector<Candidato>& cand) const;
 
-        vector<Candidato> retornaCandEleitos(vector<Candidato> & candValidos);
+        vector<Candidato> retornaCandEleitos(const vector<Candidato>& candValidos) const; 
 
-        vector<Candidato> retornaCandsMaisVotados(vector<Candidato> & candValidos, int qtdEleitos);
+        vector<Candidato> retornaCandsMaisVotados(const vector<Candidato>& candValidos, const int qtdEleitos) const;
 
-        vector<Candidato> identificaBeneficiados(vector<Candidato> & candEleitos, vector<Candidato> & maisVotados);
+        vector<Candidato> identificaBeneficiados(const vector<Candidato>& candEleitos, const vector<Candidato>& maisVotados) const;
 
-        vector<Candidato> identificaNaoEleitos(vector<Candidato> & candEleitos, vector<Candidato> & maisVotados);
+        vector<Candidato> identificaNaoEleitos(const vector<Candidato>& candEleitos, const vector<Candidato>& maisVotados) const;
 
-        void analisaVotosPartidos(vector<Partido> & p, vector<Candidato> & candValidos);
+        void analisaVotosPartidos(vector<Partido>& p, vector<Candidato>& candValidos);
 
-        void identificaEleitosPartidos(vector<Partido> & p, vector<Candidato> & candEleitos);
+        void identificaEleitosPartidos(vector<Partido>& p, vector<Candidato>& candEleitos);
 
-        vector<Candidato> identificaPrimeirosPartido(vector<Partido> & p, vector<Candidato> & candValidos);
+        vector<Candidato> identificaPrimeirosPartido(const vector<Partido>& p, const vector<Candidato>& candValidos) const;
 
-        vector<Candidato> identificaUltimosPartido(vector<Partido> & p, vector<Candidato> & candValidos, vector<Candidato> & prim);
+        vector<Candidato> identificaUltimosPartido(const vector<Partido>& p, const vector<Candidato>& candValidos, const vector<Candidato>& prim) const;
 
-        vector<int> retornaIdades(vector<Candidato> & candEleitos, string data);
+        vector<int> retornaIdades(const vector<Candidato>& candEleitos, const string& data) const;
 
-        vector<int> retornaSexos(vector<Candidato> & candEleitos);
+        vector<int> retornaSexos(const vector<Candidato>& candEleitos) const;
 
-        vector<int> retornaVotos(vector<Partido> & partidos);
+        vector<int> retornaVotos(const vector<Partido>& partidos) const;
 
     private:
         

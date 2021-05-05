@@ -2,6 +2,7 @@
 #include <iostream>
 #include <locale>
 
+//------------------- CONSTRUCTOR ------------------
 Candidato::Candidato(list<string> lista){
     
     vector<string> aux(lista.begin(), lista.end());
@@ -17,35 +18,37 @@ Candidato::Candidato(list<string> lista){
     setNumero_partido(stoi(aux[8]));
 }
 
-string Candidato::getNome(){
+
+//------------------- MÉTODOS SETTERS E GETTERS ------------------
+string Candidato::getNome() const{
     return nome;
 } 
 void Candidato::setNome(string nome){
     this->nome = nome;
 }
 
-string Candidato::getSexo(){
+string Candidato::getSexo() const{
     return sexo;
 }
 void Candidato::setSexo(string sexo){
     this->sexo = sexo;
 } 
 
-string Candidato::getData_nasc(){
+string Candidato::getData_nasc() const{
     return data_nasc;
 } 
 void Candidato::setData_nasc(string data_nasc){
     this->data_nasc = data_nasc;
 } 
 
-int Candidato::getNumero(){
+int Candidato::getNumero() const{
     return numero;
 }
 void Candidato::setNumero(int numero){
     this->numero = numero;
 }
 
-int Candidato::getNumero_partido(){
+int Candidato::getNumero_partido() const{
     return numero_partido;
 }
 
@@ -53,63 +56,63 @@ void Candidato::setNumero_partido(int numero_partido){
     this->numero_partido = numero_partido;
 }
 
-int Candidato::getVotos_nominais(){
+int Candidato::getVotos_nominais() const{
     return votos_nominais;
 } 
-
 void Candidato::setVotos_nominais(int votos_nominais){
     this->votos_nominais = votos_nominais;
 }
 
-string Candidato::getSituacao(){
+string Candidato::getSituacao() const{
     return situacao;
 } 
-
 void Candidato::setSituacao(string situacao){
     this->situacao = situacao;
 }
 
-string Candidato::getNome_urna(){
+string Candidato::getNome_urna() const{
     return nome_urna;
 }
-
 void Candidato::setNome_urna(string nome_urna){
     this->nome_urna = nome_urna;
 } 
 
-string Candidato::getDestino_voto(){
+string Candidato::getDestino_voto() const{
     return destino_voto;
 } 
-
 void Candidato::setDestino_voto(string destino_voto){
     this->destino_voto = destino_voto;
 }
 
-bool Candidato::identificaEleitos(){
+bool Candidato::identificaEleitos() const{
     return (this->getSituacao() == "Eleito");
 }
 
-bool Candidato::identificaValidade(){
+bool Candidato::identificaValidade() const{
     return (this->getDestino_voto() == "Válido");
 }
 
+
 //------------------- MÉTODO DE COMPARAÇÃO PELO NÚMERO DO PARTIDO ------------------
-bool Candidato::comparaNumPartido(int numeroId){
+bool Candidato::comparaNumPartido(const int numeroId) const{
     if(this->numero_partido == numeroId){
         return true;
     }
     return false;
 }
 
+
 //------------------- MÉTODO PARA RETORNAR IDADE DO CANDIDATO ------------------
-int Candidato::retornaIdadeCandidato(string dataRef){
+int Candidato::retornaIdadeCandidato(const string& dataRef) const{
     string dataCand[3];
     string dataAtual[3];
 
+    //Faz um split da data de nascimento do candidato
     dataCand[0] = (this->data_nasc).substr(0,2);
     dataCand[1] = (this->data_nasc).substr(3,2);
     dataCand[2] = (this->data_nasc).substr(6);
     
+    //Faz um split da data da eleição
     dataAtual[0] = (dataRef).substr(0,2);
     dataAtual[1] = (dataRef).substr(3,2);
     dataAtual[2] = (dataRef).substr(6);
@@ -124,8 +127,9 @@ int Candidato::retornaIdadeCandidato(string dataRef){
         
 }
 
+
 //------------------- MÉTODOS DE IMPRESSÃO TOSTRING ------------------
-void Candidato::imprimeCandidatos(vector<Partido> & part){
+void Candidato::imprimeCandidatos(const vector<Partido>& part) const{
     for(auto partido : part){
         if(partido.comparaPartido(this->numero_partido)){
             cout << this->getNome() << " / " << this->getNome_urna() << " (" << partido.getSigla_partido() << ", " << this->getVotos_nominais();
@@ -142,7 +146,7 @@ void Candidato::imprimeCandidatos(vector<Partido> & part){
     }
 }
 
-void Candidato::imprime(vector<Partido> & part, string nome, int num, int votos){
+void Candidato::imprime(const vector<Partido>& part, const string nome, const int num, const int votos) const{
     
     for(auto partido : part){
         if(partido.comparaPartido(this->numero_partido)){  
@@ -165,7 +169,3 @@ void Candidato::imprime(vector<Partido> & part, string nome, int num, int votos)
         }
     }
 }
-
-
-
-    

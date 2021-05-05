@@ -2,36 +2,36 @@
 #define PARTIDO_H_
 #include <vector>
 #include <list>
-#include <string>		// Necessário para usar strings
+#include <string>
 using namespace std;
 
 class Partido{
     public:
         Partido(list<string> lista);
-        int getNumero_partido();
+        int getNumero_partido() const;
         void setNumero_partido(int numero_partido);
 
-        int getVotos_legenda();
+        int getVotos_legenda() const;
         void setVotos_legenda(int votos_legenda); 
 
-        string getNome_partido(); 
+        string getNome_partido() const; 
         void setNome_partido(string nome_partido); 
 
-        string getSigla_partido();   
+        string getSigla_partido() const;   
         void setSigla_partido(string sigla_partido);
 
-        int getVotos_total(); 
+        int getVotos_total() const; 
         void setVotos_total(int votos_total); 
 
-        int getVotos_nominais();    
+        int getVotos_nominais() const;    
         void setVotos_nominais(int votos_nominais); 
 
-        int getCand_eleitos(); 
+        int getCand_eleitos() const; 
         void setCand_eleitos(int cand_eleitos); 
 
-        bool comparaPartido(int numeroId);
+        bool comparaPartido(const int numeroId) const;
 
-        void imprimePartido();
+        void imprimePartido() const;
        
   
     private:

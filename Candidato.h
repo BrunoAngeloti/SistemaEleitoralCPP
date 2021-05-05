@@ -10,41 +10,41 @@ class Candidato{
     public:
         Candidato(list<string> lista);
         
-        string getNome(); 
+        string getNome() const; 
         void setNome(string nome); 
 
-        string getSexo(); 
+        string getSexo() const; 
         void setSexo(string sexo); 
 
-        string getData_nasc(); 
+        string getData_nasc() const; 
         void setData_nasc(string data_nasc); 
 
-        int getNumero(); 
+        int getNumero() const; 
         void setNumero(int numero); 
 
-        int getNumero_partido(); 
+        int getNumero_partido() const; 
         void setNumero_partido(int numero_partido); 
 
-        int getVotos_nominais(); 
+        int getVotos_nominais() const; 
         void setVotos_nominais(int votos_nominais); 
 
-        string getSituacao(); 
+        string getSituacao() const; 
         void setSituacao(string situacao);
 
-        string getNome_urna(); 
+        string getNome_urna() const; 
         void setNome_urna(string nome_urna); 
 
-        string getDestino_voto(); 
+        string getDestino_voto() const; 
         void setDestino_voto(string destino_voto); 
 
-        bool identificaEleitos();
-        bool identificaValidade();
+        bool identificaEleitos() const;
+        bool identificaValidade() const;
         
-        bool comparaNumPartido(int numeroId);
-        int retornaIdadeCandidato(string dataRef);
+        bool comparaNumPartido(const int numeroId) const;
+        int retornaIdadeCandidato(const string& dataRef) const;
 
-        void imprimeCandidatos(vector<Partido> & part);
-        void imprime(vector<Partido> & part, string nome, int num, int votos);
+        void imprimeCandidatos(const vector<Partido> & part) const;
+        void imprime(const vector<Partido>& part, const string nome, const int num, const int votos) const;
 
 
     private:

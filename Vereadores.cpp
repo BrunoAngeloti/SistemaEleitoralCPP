@@ -8,6 +8,7 @@
 using namespace std;
 
 int main(int argc, char* argv[]){
+    // Verifica se existem argumentos suficientes
     if(argc < 4){
         cout << "Insira uma quantidade correta de argumentos!" << endl;
         cout << "./<executavel> <diretório arquivo candidatos> <diretório arquivo partidos> <data da eleição>" << endl;
@@ -32,10 +33,8 @@ int main(int argc, char* argv[]){
     vector<Candidato> candidatosValidos = info.retornaCandValidos(candidatos);
 
     // Organiza os candidatos válidos por ordem de mais votados
-    //candidatosValidos = 
     info.ordenaCandidatos(candidatosValidos);
-    //info.ordenaCandidatos(&candidatosValidos);
-
+    
 
     //-------------------ANALISA CANDIDATOS--------------------
 
@@ -88,7 +87,5 @@ int main(int argc, char* argv[]){
         naoEleitos, candidatosValidos, beneficiados, primeiros, ultimos
     );
 
-    in.imprimeIdadeSexoVoto(idades, sexos, votos, qtdEleitos);
-            
-    
+    in.imprimeIdadeSexoVoto(idades, sexos, votos, qtdEleitos); 
 }

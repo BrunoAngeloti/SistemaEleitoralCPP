@@ -9,30 +9,30 @@ using namespace std;
 
 class Inout{
     public:
-        vector<Partido> lePartidos(string arq);
-        
-        vector<Candidato> leCandidatos(string arq);
+        vector<Partido> lePartidos(const string& arq);     
+        vector<Candidato> leCandidatos(const string& arq);
+
         void imprimeRelatorios(
             int qtdEleitos, 
-            vector<Candidato> & candidatosEleitos, 
-            vector<Partido> & partidos, 
-            vector<Candidato> & maisVotados, 
-            vector<Candidato> & naoEleitos,
-            vector<Candidato> & candidatosValidos, 
-            vector<Candidato> & beneficiados,
-            vector<Candidato> & primeiros, 
-            vector<Candidato> & ultimos
-        );
-        void imprimeIdadeSexoVoto(vector<int> & idades, vector<int> & sexos, vector<int> & votos, int qtdEleitos);
+            const vector<Candidato>& candidatosEleitos, 
+            const vector<Partido>& partidos, 
+            const vector<Candidato>& maisVotados, 
+            const vector<Candidato>& naoEleitos,
+            const vector<Candidato>& candidatosValidos, 
+            const vector<Candidato>& beneficiados,
+            const vector<Candidato>& primeiros, 
+            const vector<Candidato>& ultimos
+        ) const;
+        void imprimeIdadeSexoVoto(const vector<int>& idades, const vector<int>& sexos, const vector<int>& votos, const int qtdEleitos) const;
     private:
-        void imprimeNumVagas(int qtdEleitos);
-        void imprimeVereadoresEleitos(vector<Candidato> & candidatosEleitos, vector<Partido> & partidos);
-        void imprimeMaisVotados(vector<Candidato> & maisVotados, vector<Partido> & partidos);
-        void imprimeNaoEleitos(vector<Candidato> & maisVotados, vector<Candidato> & naoEleitos, vector<Partido> & partidos);
-        void imprimeBeneficiados(vector<Candidato> & candValidos, vector<Candidato> & beneficiados, vector<Partido> & partidos);
-        void imprimePartidos(vector<Partido> & partidos);
-        void imprimePrimUlt(vector<Candidato> & primeiros, vector<Candidato> & ultimos, vector<Partido> & partidos);
-        string formatDoubleCurrency(const double num);
+        void imprimeNumVagas(int qtdEleitos) const;
+        void imprimeVereadoresEleitos(const vector<Candidato>& candidatosEleitos, const vector<Partido>& partidos) const;
+        void imprimeMaisVotados(const vector<Candidato>& maisVotados, const vector<Partido>& partidos) const;
+        void imprimeNaoEleitos(const vector<Candidato>& maisVotados, const vector<Candidato>& naoEleitos, const vector<Partido>& partidos) const;
+        void imprimeBeneficiados(const vector<Candidato>& candValidos, const vector<Candidato>& beneficiados, const vector<Partido>& partidos) const;
+        void imprimePartidos(const vector<Partido> & partidos) const;
+        void imprimePrimUlt(const vector<Candidato>& primeiros, const vector<Candidato>& ultimos, const vector<Partido>& partidos) const;
+        string formataSaidaDouble(const double num) const;
 };
 
 #endif
