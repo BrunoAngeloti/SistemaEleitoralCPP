@@ -1,12 +1,3 @@
-############
-# Exemplo de makefile
-# Prof. João Paulo A. Almeida
-# Programação III
-# 
-# A princípio, você não precisa alterar nada, mas aqui assume-se que o diretório atual
-# é o diretório onde estão os códigos fonte (.cpp).
-#
-
 # nome do compilador
 CPP = g++
 
@@ -39,6 +30,9 @@ $(EXECUTAVEL): $(OBJETOS)
 # (observação, aqui não estamos capturando as dependências de arquivos .h)
 %.o: %.cpp
 	@$(CPP) $(CPPFLAGS) -c $(CFLAGS) $^
+
+make: Vereadores.cpp Candidato.cpp Informacoes.cpp Partido.cpp Inout.cpp
+	g++ -std=c++11 -o vereadores *.cpp
 
 # o comando para executar deve especificar sempre como parâmetro divulga.csv	
 run: $(EXECUTAVEL)
