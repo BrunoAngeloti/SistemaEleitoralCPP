@@ -3,7 +3,7 @@
 #include <algorithm>
 
 //Método privado de ordenação dos partidos por numero de votos e desempate por numero do partido
-bool ordenaVotosPartidos(const Partido& A, const Partido& B) {
+bool Informacoes::ordenaVotosPartidos(const Partido& A, const Partido& B) {
     if(A.getVotos_total() > B.getVotos_total()){
         return true;
     } 
@@ -20,7 +20,7 @@ bool ordenaVotosPartidos(const Partido& A, const Partido& B) {
 }
 
 //Método privado de ordenação dos candidatos por numero de votos e desempate por idade
-bool ordenaVotosCandidatos(const Candidato& A, const Candidato& B) {
+bool Informacoes::ordenaVotosCandidatos(const Candidato& A, const Candidato& B) {
 
     string dataCand1[3];
     string dataCand2[3];
@@ -75,7 +75,7 @@ bool ordenaVotosCandidatos(const Candidato& A, const Candidato& B) {
 }
 
 //Método privado de ordenação dos candidatos por numero de votos e desempate por numero do partido
-bool ordenaVotosCandidatos2(const Candidato& A, const Candidato& B) {
+bool Informacoes::ordenaVotosCandidatos2(const Candidato& A, const Candidato& B) {
     if(A.getVotos_nominais() > B.getVotos_nominais()){
         return true; 
     }

@@ -43,7 +43,9 @@ class Informacoes{
         vector<int> retornaVotos(const vector<Partido>& partidos) const;
 
     private:
-        
+        static bool ordenaVotosPartidos(const Partido& A, const Partido& B);
+        static bool ordenaVotosCandidatos(const Candidato& A, const Candidato& B);
+        static bool ordenaVotosCandidatos2(const Candidato& A, const Candidato& B);
 };
 
 #endif
