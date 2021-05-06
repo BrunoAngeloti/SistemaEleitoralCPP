@@ -4,6 +4,8 @@
 #include <fstream>
 #include <iomanip>
 #include <sstream>
+#include <stdexcept>
+
 
 //Método para ler os partidos do arquivo
 vector<Partido> Inout::lePartidos(const string& arq){
@@ -43,7 +45,8 @@ vector<Partido> Inout::lePartidos(const string& arq){
             aux.clear();
         }
     }else{
-        cout << "Não foi possível abrir este arquivo" << endl;
+        throw runtime_error("Não foi possivel abrir o arquivo de partidos");
+        
     }
     
     //Fecha o arquivo e transforma a lista em um vetor
@@ -91,7 +94,7 @@ vector<Candidato> Inout::leCandidatos(const string& arq){
             aux.clear();
         }
     }else{
-        cout << "Não foi possível abrir este arquivo" << endl;
+        throw runtime_error("Não foi possivel abrir o arquivo de candidatos");
     }
     
     //Fecha o arquivo e transforma a lista em um vetor
